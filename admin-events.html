@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Events - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body admin-mode">
+
+    <nav class="navbar admin-nav">
+        <div class="logo">ANTIGRAVITY <span class="highlight">ADMIN</span></div>
+        <div class="nav-links">
+            <a href="admin.html" class="nav-link">Main Score Admin</a>
+            <a href="events.html" class="nav-link" target="_blank">View Events Box</a>
+            <button onclick="logout()" class="nav-btn logout-btn">Logout</button>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        
+        <header class="dashboard-header text-center">
+            <h1>Manage Event Winners</h1>
+            <p>Assign houses to the top 4 positions for all 35 events.</p>
+        </header>
+
+        <div class="admin-panel admin-events-panel">
+            
+            <div class="events-actions">
+                <button class="primary-btn submit-scores" onclick="saveAdminEvents()">
+                    Save All Event Results
+                </button>
+            </div>
+            
+            <div id="adminEventsContainer" class="admin-events-list">
+                <!-- Events injected by JS -->
+            </div>
+
+            <div class="events-actions">
+                <button class="primary-btn submit-scores" onclick="saveAdminEvents()">
+                    Save All Event Results
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Check authentication
+        if (sessionStorage.getItem('isAdmin') !== 'true') {
+            window.location.href = "login.html";
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAdminEvents();
+        });
+    </script>
+</body>
+</html>
